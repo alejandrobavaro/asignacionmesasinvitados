@@ -1,0 +1,127 @@
+/* Estilos para la visualización de mesas */
+.mesa-visual {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+  }
+  
+  .mesa-circular {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: #f5e7d4;
+    border: 3px solid #8B4513;
+    border-radius: 50%;
+    top: 25px;
+    left: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+    &.mesa-vip {
+      border-color: gold;
+      background: #fff9e6;
+    }
+  
+    .mesa-nombre {
+      font-weight: bold;
+      text-align: center;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+    }
+  
+    .mesa-capacidad-indicador {
+      font-size: 0.8rem;
+      color: #666;
+    }
+  }
+  
+  .silla {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: -15px 0 0 -15px; /* Ajuste para centrar la silla */
+  
+    &:hover {
+      transform: scale(1.1);
+    }
+  
+    &.silla-ocupada {
+      background: #8B4513;
+    }
+  
+    &.silla-vacia {
+      background: #DDD;
+    }
+  
+    &.silla-pendiente {
+      opacity: 0.7;
+      border: 1px dashed #ccc;
+    }
+  
+    &[data-tooltip] {
+      position: relative;
+  
+      &:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        z-index: 10;
+      }
+    }
+  }
+  
+  /* Posicionamiento circular de las sillas - Método corregido */
+  @for $i from 1 through 10 {
+    .silla:nth-child(#{$i}) {
+      $angle: ($i - 1) * (360deg / 10);
+      $distance: 85px;
+      $x: calc(50% + #{$distance * cos($angle)});
+      $y: calc(50% + #{$distance * sin($angle)});
+      transform: translate(-50%, -50%) translate(#{$distance * cos($angle)}, #{$distance * sin($angle)});
+    }
+  }
+  
+  /* Media Queries para responsive design */
+  @media (min-width: 768px) {
+    .mesa-visual {
+      width: 220px;
+      height: 220px;
+  
+      .mesa-circular {
+        width: 170px;
+        height: 170px;
+      }
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .mesa-visual {
+      width: 250px;
+      height: 250px;
+  
+      .mesa-circular {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }

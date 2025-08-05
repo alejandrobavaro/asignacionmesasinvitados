@@ -1,0 +1,225 @@
+/* ============ HEADER - MOBILE FIRST (0-412px) ============ */
+.app-header {
+  width: 100%;
+  max-width: 412px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1000;
+  font-family: "Cormorant Garamond", serif;
+
+  /* Decoración superior e inferior con animación */
+  .header-decoration-top,
+  .header-decoration-bottom {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #c2a78d, #7a4f50, #c2a78d, transparent);
+    animation: baroqueFlow 8s linear infinite;
+    opacity: 0.7;
+  }
+
+  /* Barra de navegación principal */
+  .header-navbar {
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 0;
+
+    .header-container {
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+  }
+
+  /* Logo izquierdo */
+  .header-logo-left {
+    padding: 0;
+    margin-right: auto;
+
+    .logo-image {
+      max-width: 70px;
+      height: auto;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  /* Logo derecho */
+  .header-logo-right {
+    padding: 0;
+    margin-left: auto;
+
+    .logo-image {
+      max-width: 70px;
+      height: auto;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  /* Botón menú hamburguesa */
+  .menu-toggle {
+    border: none;
+    padding: 6px;
+    background: none;
+
+    .menu-icon {
+      font-size: 22px;
+      color: #5a2d2d;
+      transition: all 0.3s ease;
+    }
+
+    &:hover .menu-icon {
+      color: #8c5e3d;
+    }
+  }
+
+  /* Menú de navegación */
+  .navbar-menu {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+
+    &.open {
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 10px 0;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      padding: 0 10px;
+
+      .nav-link {
+        padding: 8px 0;
+        color: #5a2d2d;
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        text-decoration: none;
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+
+        .nav-icon {
+          margin-right: 8px;
+          font-size: 16px;
+          min-width: 20px;
+          text-align: center;
+        }
+
+        .nav-label {
+          font-size: 14px;
+        }
+
+        &:hover {
+          color: #8c5e3d;
+        }
+
+        &.active {
+          color: #7a4f50;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+/* ============ TABLET (768px+) ============ */
+@media (min-width: 768px) {
+  .app-header {
+    max-width: 100%;
+
+    .header-navbar {
+      .header-container {
+        max-width: 720px;
+        margin: 0 auto;
+        flex-wrap: nowrap;
+        padding: 6px 16px;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .navbar-menu {
+        width: auto;
+        max-height: none;
+        padding: 0;
+        margin-left: 20px;
+
+        &.open {
+          padding: 0;
+          overflow-y: visible;
+        }
+
+        .nav-links {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 6px;
+          padding: 0;
+
+          .nav-link {
+            padding: 6px 10px;
+            flex-direction: column;
+            align-items: center;
+            width: auto;
+
+            .nav-icon {
+              margin-right: 0;
+              margin-bottom: 2px;
+              font-size: 16px;
+            }
+
+            .nav-label {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ============ DESKTOP (1024px+) ============ */
+@media (min-width: 1024px) {
+  .app-header {
+    .header-navbar {
+      .header-container {
+        max-width: 960px;
+      }
+
+      .navbar-menu {
+        .nav-links {
+          gap: 8px;
+
+          .nav-link {
+            padding: 8px 12px;
+
+            .nav-label {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Animación para la decoración del header */
+@keyframes baroqueFlow {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}

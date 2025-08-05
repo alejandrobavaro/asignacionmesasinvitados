@@ -1,0 +1,108 @@
+/* ================================================================
+   MainPublicidadSlider.scss
+   Estilos para el componente de slider publicitario
+   Mobile First Strategy
+================================================================ */
+
+/* Contenedor principal del slider */
+.advertisement-container {
+  width: 100%;
+  max-width: 412px;       /* Máximo en mobile */
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* Contenido con borde redondeado y overflow hidden para contener los sliders */
+.advertisement-content {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Contenedor de los 2 sliders en columna por defecto */
+.slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;   /* Espaciado entre sliders */
+  width: 100%;
+}
+
+/* Cada slider */
+.slider-wrapper {
+  width: 100%;
+  padding: 8px;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+}
+
+/* Item individual dentro del slider */
+.slider-item {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  outline: none;
+}
+
+/* Imagen dentro del slider */
+.advertisement-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02); /* Efecto zoom al hover */
+  }
+}
+
+/* ================================================================
+   Responsive: Tablet 600px+
+   - Cambia layout de columna a fila.
+================================================================ */
+@media (min-width: 600px) {
+  .slider-row {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .slider-wrapper {
+    width: 48%;
+    max-width: 260px;
+  }
+}
+
+/* ================================================================
+   Small Desktop: 768px+
+================================================================ */
+@media (min-width: 768px) {
+  .advertisement-container {
+    max-width: 720px;
+  }
+
+  .slider-wrapper {
+    max-width: 340px;
+  }
+}
+
+/* ================================================================
+   Desktop: 992px+
+================================================================ */
+@media (min-width: 992px) {
+  .advertisement-container {
+    max-width: 960px;
+  }
+
+  .slider-wrapper {
+    max-width: 460px;
+  }
+}
+
+/* ================================================================
+   Large Desktop: 1200px+
+================================================================ */
+@media (min-width: 1200px) {
+  .advertisement-container {
+    max-width: 1140px;
+  }
+}

@@ -1,0 +1,113 @@
+/* ==========================================================================
+   COMPONENTE FooterGondraWorldDev
+   ========================================================================== */
+
+/* CONTENEDOR PRINCIPAL */
+.trademarkGondraFooter {
+  text-align: center;
+  margin: 0;
+  padding: 20px 0;
+}
+
+/* TEXTO PRINCIPAL DEL AUTOR */
+.textoFooterAutor {
+  border-radius: 30px;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  color: #f2ffb8;
+}
+
+/* TEXTO PRINCIPAL */
+.texto-principal {
+  font-size: medium;
+  color: #f2ffb8;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 10px;
+}
+
+/* TEXTO SECUNDARIO */
+.texto-secundario {
+  font-size: medium;
+  color: #d4fdf4;
+  margin-left: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* GRILLA DE BANNERS */
+.gridPadreProductosGondraFooter1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+/* ESTILO DE IMÁGENES */
+.imagen-limitada8 {
+  max-width: 120px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* CENTRADO DE OBJETOS */
+.objetoCentrado1 {
+  display: block;
+  margin: 0 auto;
+}
+
+/* TEXTO INFERIOR */
+.textoFooterGondraWorld {
+  font-size: small;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* LÍNEA HR */
+hr {
+  margin: 20px 0;
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET <= 768px
+   ========================================================= */
+@media (max-width: 768px) {
+  .texto-principal,
+  .texto-secundario {
+    font-size: medium;
+  }
+
+  .imagen-limitada8 {
+    max-width: 100px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE <= 480px
+   ========================================================= */
+@media (max-width: 480px) {
+  .texto-principal,
+  .texto-secundario {
+    font-size: small;
+  }
+
+  .imagen-limitada8 {
+    max-width: 80px;
+  }
+
+  .gridPadreProductosGondraFooter1 {
+    gap: 10px;
+    padding: 0px;
+    margin-bottom: 250px;
+  }
+
+  .textoFooterAutor {
+    padding: 15px;
+    margin-top: 0px;
+  }
+}

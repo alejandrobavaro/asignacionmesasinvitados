@@ -1,0 +1,680 @@
+/* ==========================================================================
+   COMPONENTE ASIGNACIÓN DE MESAS - Mobile First
+   ========================================================================== */
+
+// RÓTULO: Estilos base para el contenedor principal.
+// Se define la tipografía, ancho máximo para móvil, márgenes, padding, colores y altura mínima.
+.asignacion-container {
+  font-family: 'Cormorant Garamond', serif;
+  max-width: 412px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #fff9f0; // Fondo transparentado con tonalidad del proyecto
+  color: #333;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+// RÓTULO: Estilos para el estado de carga (loading).
+.asignacion-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+
+  // RÓTULO: Estilos para el spinner de carga.
+  .loading-spinner {
+    border: 4px solid rgba(90, 45, 45, 0.1);
+    border-top: 4px solid #5a2d2d;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #5a2d2d;
+    font-size: 1rem;
+  }
+}
+
+// RÓTULO: Animación para el spinner de carga.
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// RÓTULO: Estilos del encabezado.
+.asignacion-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+// RÓTULO: Título principal.
+.asignacion-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: #5a2d2d;
+  margin-bottom: 1rem;
+}
+
+// RÓTULO: Contenedor de controles (búsqueda y botón de nueva mesa).
+.asignacion-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+// RÓTULO: Estilos para la barra de búsqueda.
+.asignacion-busqueda {
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      border-color: #5a2d2d;
+      box-shadow: 0 0 0 2px rgba(90, 45, 45, 0.2);
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+  }
+}
+
+// RÓTULO: Estilos del botón de "Nueva Mesa".
+.asignacion-nueva-mesa {
+  background-color: #5a2d2d;
+  color: white;
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+  // Asegurando padding mínimo (regla de diseño)
+  min-width: 44px;
+  min-height: 44px;
+
+  &:hover {
+    background-color: #4a2525;
+  }
+
+  .plus-icon {
+    font-size: 1.2rem;
+  }
+}
+
+// RÓTULO: Estilos del formulario para crear nueva mesa.
+.asignacion-formulario-mesa {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: #5a2d2d;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+}
+
+.formulario-grupo {
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #5a2d2d;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      border-color: #5a2d2d;
+    }
+  }
+}
+
+.formulario-botones {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+
+  button {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    // Asegurando padding mínimo (regla de diseño)
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+.boton-guardar {
+  background-color: #5a2d2d;
+  color: white;
+
+  &:hover {
+    background-color: #4a2525;
+  }
+}
+
+.boton-cancelar {
+  background-color: #f5f5f5;
+  color: #333;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+}
+
+// RÓTULO: Estilos de las tarjetas de estadísticas.
+.asignacion-estadisticas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.estadistica-tarjeta {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.estadistica-numero {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: #5a2d2d;
+  margin-bottom: 0.3rem;
+}
+
+.estadistica-etiqueta {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+// RÓTULO: Contenedor del contenido principal (lista de invitados y mesas).
+.asignacion-contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+// RÓTULO: Subtítulos de secciones.
+.asignacion-subtitulo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: #5a2d2d;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+// RÓTULO: Sección de invitados.
+.asignacion-invitados {
+  flex: 1;
+}
+
+// RÓTULO: Contenedor de grupos con scroll.
+.asignacion-grupos {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.grupo-item {
+  margin-bottom: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.grupo-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background-color: #f5f5f5;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #eeeeee;
+  }
+}
+
+.grupo-nombre {
+  font-weight: 500;
+
+  .grupo-contador {
+    color: #777;
+    font-size: 0.9rem;
+  }
+}
+
+// RÓTULO: Botón para asignar grupo completo.
+.grupo-asignar {
+  background-color: #5a2d2d;
+  color: white;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  // Asegurando padding mínimo (regla de diseño)
+  min-width: 44px;
+  min-height: 44px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.grupo-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+}
+
+// RÓTULO: Elemento individual de invitado en la lista de grupos.
+.invitado-item {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+
+  &:hover {
+    background-color: #fafafa;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.invitado-nombre {
+  font-weight: 500;
+}
+
+.invitado-info {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.invitado-asignado {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+// RÓTULO: Sección de mesas.
+.asignacion-mesas {
+  flex: 1;
+}
+
+.asignacion-lista-mesas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+// RÓTULO: Contenedor individual de mesa.
+.mesa-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: white;
+  cursor: pointer;
+
+  // RÓTULO: Estilo para la mesa seleccionada.
+  &.mesa-seleccionada {
+    border-color: #5a2d2d;
+    box-shadow: 0 0 0 2px rgba(90, 45, 45, 0.2);
+  }
+}
+
+.mesa-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.mesa-nombre {
+  font-weight: 500;
+}
+
+.mesa-capacidad {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+// RÓTULO: Botón de eliminación de mesa.
+.mesa-eliminar {
+  background: none;
+  border: none;
+  color: #d32f2f;
+  cursor: pointer;
+  padding: 0.2rem;
+  // Asegurando padding mínimo (regla de diseño)
+  min-width: 44px;
+  min-height: 44px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.mesa-invitados {
+  list-style: none;
+  padding: 0.5rem;
+  margin: 0;
+  min-height: 60px;
+}
+
+// RÓTULO: Elemento individual de invitado en una mesa.
+.mesa-invitado-item {
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.5rem;
+  background-color: #f9f9f9;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+}
+
+.invitado-detalle {
+  flex: 1;
+}
+
+.invitado-nombre-mesa {
+  display: block;
+  font-weight: 500;
+}
+
+.invitado-grupo-mesa {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+// RÓTULO: Botón para remover invitado de la mesa.
+.invitado-remover {
+  background: none;
+  border: none;
+  color: #d32f2f;
+  cursor: pointer;
+  padding: 0.2rem;
+  margin-left: 0.5rem;
+  // Asegurando padding mínimo (regla de diseño)
+  min-width: 44px;
+  min-height: 44px;
+}
+
+// RÓTULO: Pie de página.
+.asignacion-pie {
+  margin-top: 1.5rem;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+// RÓTULO: Botón de exportar.
+.asignacion-exportar {
+  background-color: #5a2d2d;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+  // Asegurando padding mínimo (regla de diseño)
+  min-width: 44px;
+  min-height: 44px;
+
+  &:hover {
+    background-color: #4a2525;
+  }
+}
+
+// RÓTULO: Estilos para el elemento mientras se arrastra (Drag and Drop).
+.dragging {
+  background-color: #e3f2fd !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  z-index: 100;
+  opacity: 0.9;
+
+  // Oculta información adicional y el botón de remover mientras se arrastra.
+  .invitado-info,
+  .invitado-asignado,
+  .invitado-grupo-mesa,
+  .invitado-remover {
+    display: none !important;
+  }
+}
+
+// RÓTULO: Estilo del placeholder donde se suelta el elemento.
+// Se usa un selector de clase genérico ya que `react-beautiful-dnd` maneja el placeholder.
+.drag-placeholder {
+  background-color: #bbdefb;
+  border-radius: 0.3rem;
+  transition: all 0.2s ease;
+}
+
+// RÓTULO: Mejoras de accesibilidad y usabilidad para el cursor.
+[data-rbd-drag-handle-context-id] {
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+// RÓTULO: Estilos para el Draggable general.
+[data-rbd-draggable-context-id] {
+  transition: all 0.2s ease;
+
+  // Asegura que los elementos arrastrables tengan posición relativa.
+  &[data-rbd-draggable-id]:not([data-rbd-draggable-id='']) {
+    position: relative;
+  }
+}
+
+// RÓTULO: Estilos para la vista previa del elemento arrastrado.
+[data-rbd-drag-preview] {
+  background-color: white !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  padding: 0.8rem !important;
+  opacity: 0.95 !important;
+  transform: rotate(2deg) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  // Estilos específicos para nombres dentro de la vista previa.
+  .invitado-nombre,
+  .invitado-nombre-mesa {
+    font-weight: 500;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+  }
+
+  // Oculta elementos no deseados en la vista previa.
+  .invitado-info,
+  .invitado-asignado,
+  .invitado-grupo-mesa,
+  .invitado-remover {
+    display: none !important;
+  }
+}
+
+// RÓTULO: Estilos para barras de desplazamiento.
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #bdbdbd;
+  border-radius: 3px;
+}
+
+/* ==========================================================================
+   ADAPTACIONES PARA TABLET (768px+)
+   ========================================================================== */
+
+// RÓTULO: Media Query para tablet (breakpoints en 768px).
+@media (min-width: 768px) {
+  // Ajuste del ancho máximo y padding para tablet.
+  .asignacion-container {
+    max-width: 768px;
+    padding: 1.5rem;
+  }
+
+  // Ajuste del título.
+  .asignacion-titulo {
+    font-size: 2rem;
+  }
+
+  // Los controles pasan a disposición horizontal en tablet.
+  .asignacion-controls {
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .asignacion-busqueda {
+    flex: 1;
+  }
+
+  .asignacion-nueva-mesa {
+    flex: none;
+  }
+
+  // Estadísticas pasan a 4 columnas.
+  .asignacion-estadisticas {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  // Contenido principal pasa a disposición horizontal con dos columnas.
+  .asignacion-contenido {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  // Ajuste del ancho de las secciones de invitados y mesas.
+  .asignacion-invitados {
+    flex: 1.5;
+  }
+
+  .asignacion-mesas {
+    flex: 2;
+  }
+
+  // La lista de mesas se muestra en 2 columnas en tablet.
+  .asignacion-lista-mesas {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   ADAPTACIONES PARA ESCRITORIO (1024px+)
+   ========================================================================== */
+
+// RÓTULO: Media Query para escritorio (breakpoints en 1024px).
+@media (min-width: 1024px) {
+  // Ajuste del ancho máximo y padding para escritorio.
+  .asignacion-container {
+    max-width: 1200px;
+    padding: 2rem;
+  }
+
+  // Ajuste del gap en el contenido principal para escritorio.
+  .asignacion-contenido {
+    gap: 3rem;
+  }
+
+  // La lista de mesas se muestra en 3 columnas en escritorio.
+  .asignacion-lista-mesas {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  // Ajuste de anchos relativos de las secciones en escritorio.
+  .asignacion-invitados {
+    flex: 1;
+    // Opcional: ajustar el ancho de la lista de invitados para mayor legibilidad.
+    .asignacion-grupos {
+      max-height: 600px;
+    }
+  }
+
+  .asignacion-mesas {
+    flex: 2;
+  }
+
+  // Incremento progresivo del gap en breakpoints (regla de diseño)
+  .asignacion-estadisticas {
+    gap: 2rem;
+  }
+}

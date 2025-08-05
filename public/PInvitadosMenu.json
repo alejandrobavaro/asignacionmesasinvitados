@@ -1,0 +1,180 @@
+{
+  "menuOptions": [
+    {
+      "id": "principios",
+      "name": "Para Comenzar",
+      "sliderImages": [
+        "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png",
+        "../public/img/02-logos/logo-bodaaleyfabi1a.png"
+      ],
+      "items": [
+        {
+          "id": 1,
+          "name": "Pernil al horno con especias",
+          "description": "Pernil tierno cocido lentamente con hierbas aromáticas",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 2,
+          "name": "Pizetas variadas",
+          "description": "Mini pizzas de muzarella, jamón y morrones, y napolitana",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 3,
+          "name": "Hamburguesitas gourmet",
+          "description": "Mini hamburguesas con queso cheddar, panceta y aderezos especiales",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 4,
+          "name": "Empanadas criollas",
+          "description": "Empanadas de carne, pollo y jamón & queso (identificadas)",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        }
+      ]
+    },
+    {
+      "id": "bebidas",
+      "name": "Bebidas Ilimitadas",
+      "sliderImages": [
+        "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png",
+        "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+      ],
+      "items": [
+        {
+          "id": 5,
+          "name": "Vino tinto 'Viña Romance'",
+          "description": "Vino tinto reserva especial para la boda",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 6,
+          "name": "Vino blanco 'Viña Romance'",
+          "description": "Vino blanco fresco y frutal",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 7,
+          "name": "Cerveza artesanal 'Boda Feliz'",
+          "description": "Cerveza rubia y negra especialmente elaborada",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 8,
+          "name": "Gaseosas y aguas saborizadas",
+          "description": "Variedad de gaseosas y aguas con sabores naturales",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 9,
+          "name": "Champagne 'Amor Eterno'",
+          "description": "Para el brindis especial",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        }
+      ]
+    },
+    {
+      "id": "barra-tragos",
+      "name": "Barra de Tragos (hacia el final)",
+      "sliderImages": [
+        "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png",
+        "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+      ],
+      "items": [
+        {
+          "id": 10,
+          "name": "Fernet con cola",
+          "description": "El clásico argentino",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 11,
+          "name": "Gin Tonic",
+          "description": "Con frutas frescas y hierbas",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 12,
+          "name": "Cuba Libre",
+          "description": "Ron con Coca-Cola y limón",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 13,
+          "name": "Destornillador",
+          "description": "Vodka con jugo de naranja",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 14,
+          "name": "Jugos naturales para tragos sin alcohol",
+          "description": "Variedad de jugos para mezclar",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        }
+      ]
+    },
+    {
+      "id": "postres",
+      "name": "Mesa Dulce y Torta",
+      "sliderImages": [
+        "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png",
+        "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+      ],
+      "items": [
+        {
+          "id": 15,
+          "name": "Torta de bodas de 3 pisos",
+          "description": "Bizcocho de vainilla y chocolate con relleno de dulce de leche y crema",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 16,
+          "name": "Tableta de chocolates",
+          "description": "Variedad de chocolates artesanales",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 17,
+          "name": "Alfajores de maicena",
+          "description": "Los clásicos alfajores rellenos de dulce de leche",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 18,
+          "name": "Frutas frescas",
+          "description": "Selección de frutas de estación",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        }
+      ]
+    },
+    {
+      "id": "cierre",
+      "name": "Desayuno de Cierre",
+      "sliderImages": [
+        "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png",
+        "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+      ],
+      "items": [
+        {
+          "id": 19,
+          "name": "Pizza de desayuno",
+          "description": "Pizzas recién horneadas para reponer energías",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 20,
+          "name": "Café y té",
+          "description": "Para acompañar el cierre de la fiesta",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        },
+        {
+          "id": 21,
+          "name": "Medialunas calentitas",
+          "description": "Recién horneadas para el desayuno",
+          "image": "/img/02-logos/logo-bodaaleyfabi1d - copia (2).png"
+        }
+      ]
+    }
+  ]
+}
