@@ -1,13 +1,15 @@
-/* ============ HEADER - MOBILE FIRST (0-412px) ============ */
+/* ==============================================
+   ESTILOS DEL HEADER - MOBILE FIRST
+   ============================================== */
+
 .app-header {
   width: 100%;
-  max-width: 412px;
   margin: 0 auto;
   position: relative;
   z-index: 1000;
   font-family: "Cormorant Garamond", serif;
 
-  /* Decoración superior e inferior con animación */
+  /* Decoraciones superior e inferior - Efecto visual */
   .header-decoration-top,
   .header-decoration-bottom {
     height: 3px;
@@ -20,53 +22,50 @@
   .header-navbar {
     background-color: rgba(255, 255, 255, 0.98);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    padding: 0;
+    padding: 8px 0;
 
+    /* Contenedor flexible para logo y botones */
     .header-container {
-      padding: 8px 12px;
       display: flex;
+      flex-direction: row;
       align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
       position: relative;
     }
   }
 
-  /* Logo izquierdo */
+  /* Estilos del logo (izquierdo y derecho) */
+  .header-logo-left, .header-logo-right {
+    margin: 0;
+    z-index: 1001; /* Por encima del menú móvil */
+
+    .logo-image {
+      max-width: 70px;
+      height: auto;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  /* Posicionamiento específico de los logos */
   .header-logo-left {
-    padding: 0;
     margin-right: auto;
-
-    .logo-image {
-      max-width: 70px;
-      height: auto;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.05);
-      }
-    }
   }
 
-  /* Logo derecho */
   .header-logo-right {
-    padding: 0;
     margin-left: auto;
-
-    .logo-image {
-      max-width: 70px;
-      height: auto;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.05);
-      }
-    }
   }
 
-  /* Botón menú hamburguesa */
+  /* Botón hamburguesa para móvil */
   .menu-toggle {
     border: none;
+    background: transparent;
     padding: 6px;
-    background: none;
+    order: 2; /* Posición entre los dos logos */
 
     .menu-icon {
       font-size: 22px;
@@ -79,109 +78,139 @@
     }
   }
 
-  /* Menú de navegación */
-  .navbar-menu {
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
+  /* Contenedor de botones de navegación */
+  .quick-access-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 0;
 
-    &.open {
-      max-height: 80vh;
-      overflow-y: auto;
-      padding: 10px 0;
-    }
-
-    .nav-links {
+    /* Estilo base para todos los botones */
+    .nav-button {
+      background: transparent;
+      border: none;
+      color: #5a2d2d;
+      padding: 8px 12px;
+      font-size: 14px;
       display: flex;
-      flex-direction: column;
-      padding: 0 10px;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      width: 100%;
+      text-align: left;
+      position: relative;
 
-      .nav-link {
-        padding: 8px 0;
-        color: #5a2d2d;
-        display: flex;
-        align-items: center;
-        font-weight: 600;
-        text-decoration: none;
-        background: none;
-        border: none;
-        width: 100%;
-        text-align: left;
+      /* Iconos dentro de los botones */
+      .icon {
+        font-size: 16px;
+        min-width: 20px;
+      }
 
-        .nav-icon {
-          margin-right: 8px;
-          font-size: 16px;
-          min-width: 20px;
-          text-align: center;
-        }
+      /* Texto del botón */
+      .nav-label {
+        line-height: 1.2;
+      }
 
-        .nav-label {
-          font-size: 14px;
-        }
+      /* Estado activo */
+      &.active {
+        color: #7a4f50;
+        font-weight: 700;
+        background: rgba(122, 79, 80, 0.05);
+      }
 
-        &:hover {
-          color: #8c5e3d;
-        }
-
-        &.active {
-          color: #7a4f50;
-          font-weight: 700;
-        }
+      /* Efecto hover */
+      &:hover {
+        color: #8c5e3d;
+        background: rgba(140, 94, 61, 0.05);
       }
     }
   }
 }
 
-/* ============ TABLET (768px+) ============ */
+/* ==============================================
+   MEDIA QUERIES - TABLET (768px)
+   ============================================== */
 @media (min-width: 768px) {
   .app-header {
-    max-width: 100%;
-
     .header-navbar {
       .header-container {
         max-width: 720px;
         margin: 0 auto;
-        flex-wrap: nowrap;
-        padding: 6px 16px;
+        padding: 0 16px;
+      }
+
+      .header-logo-left, .header-logo-right {
+        .logo-image {
+          max-width: 80px;
+        }
       }
 
       .menu-toggle {
         display: none;
       }
 
-      .navbar-menu {
-        width: auto;
-        max-height: none;
-        padding: 0;
-        margin-left: 20px;
+      .quick-access-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        padding: 4px 0;
+        order: 0;
+        flex: 1;
+        margin: 0 20px;
 
-        &.open {
-          padding: 0;
-          overflow-y: visible;
-        }
+        .nav-button {
+          padding: 6px 8px;
+          width: auto;
+          min-width: 70px;
+          font-size: 11px;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
 
-        .nav-links {
-          flex-direction: row;
-          flex-wrap: wrap;
-          gap: 6px;
-          padding: 0;
+          .nav-label {
+            font-size: 11px;
+          }
 
-          .nav-link {
-            padding: 6px 10px;
-            flex-direction: column;
-            align-items: center;
-            width: auto;
+          /* Tooltip personalizado debajo del botón */
+          &:hover::after {
+            content: attr(title);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(90, 45, 45, 0.95);
+            color: #f8f5f2;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 13px;
+            white-space: normal;
+            width: max-content;
+            max-width: 280px;
+            z-index: 100;
+            pointer-events: none;
+            animation: fadeIn 0.3s ease;
+            margin-top: 8px;
+            text-align: center;
+            font-family: "Cormorant Garamond", serif;
+            font-weight: 500;
+            line-height: 1.5;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            border: 1px solid #c2a78d;
+          }
 
-            .nav-icon {
-              margin-right: 0;
-              margin-bottom: 2px;
-              font-size: 16px;
-            }
-
-            .nav-label {
-              font-size: 13px;
-            }
+          /* Flecha decorativa opcional */
+          &:hover::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent rgba(90, 45, 45, 0.95) transparent;
           }
         }
       }
@@ -189,7 +218,9 @@
   }
 }
 
-/* ============ DESKTOP (1024px+) ============ */
+/* ==============================================
+   MEDIA QUERIES - ESCRITORIO (1024px)
+   ============================================== */
 @media (min-width: 1024px) {
   .app-header {
     .header-navbar {
@@ -197,16 +228,22 @@
         max-width: 960px;
       }
 
-      .navbar-menu {
-        .nav-links {
-          gap: 8px;
+      .quick-access-buttons {
+        gap: 10px;
 
-          .nav-link {
-            padding: 8px 12px;
+        .nav-button {
+          padding: 8px 10px;
+          font-size: 12px;
+          min-width: 80px;
 
-            .nav-label {
-              font-size: 14px;
-            }
+          .nav-label {
+            font-size: 12px;
+          }
+
+          &:hover::after {
+            font-size: 14px;
+            padding: 12px 18px;
+            max-width: 300px;
           }
         }
       }
@@ -214,12 +251,21 @@
   }
 }
 
-/* Animación para la decoración del header */
+/* ==============================================
+   ANIMACIONES
+   ============================================== */
 @keyframes baroqueFlow {
-  0% {
-    background-position: 100% 0;
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateX(-50%) translateY(-10px);
   }
-  100% {
-    background-position: -100% 0;
+  to { 
+    opacity: 1; 
+    transform: translateX(-50%) translateY(0);
   }
 }
