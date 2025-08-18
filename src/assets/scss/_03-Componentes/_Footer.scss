@@ -2,15 +2,22 @@
 /* COMPONENTE FOOTER - Mobile First                                           */
 /* ========================================================================== */
 
-/* Animación de la línea barroca */
 @keyframes baroqueFlow {
   0% { background-position: 100% 0; }
   100% { background-position: -100% 0; }
 }
 
-/* ======================================== */
-/* ESTRUCTURA BASE (Mobile) */
-/* ======================================== */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateX(-50%) translateY(-5px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 .footer {
   background-color: rgba(255, 255, 255, 0.12);
   font-family: 'Cormorant Garamond', serif;
@@ -32,38 +39,6 @@
     animation: baroqueFlow 8s linear infinite;
     opacity: 0.7;
     margin-top: 15px;
-  }
-
-  .contact-btn-container {
-    margin-bottom: 20px;
-    text-align: center;
-
-    .contact-btn {
-      display: inline-block;
-      padding: 10px 25px;
-      background-color: #7a4f50;
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 1px;
-      border-radius: 25px;
-      border: 2px solid #5a2d2d;
-      transition: all 0.3s ease;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #5a2d2d;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-      }
-
-      &:active {
-        transform: translateY(1px);
-      }
-    }
   }
 
   .footer-content {
@@ -90,47 +65,94 @@
     }
   }
 
-  .social-links-container {
-    width: 100%;
+  .contact-btn-container {
+    margin-bottom: 0;
+    text-align: center;
 
-    .social-links {
-      display: flex;
-      justify-content: space-around;
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 15px;
+      background: transparent;
+      border: none;
+      color: #5a2d2d;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      border-radius: 4px;
+      gap: 8px;
 
-      a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: #5a2d2d;
-        text-decoration: none;
+      .icon {
+        font-size: 1.1rem;
+        min-width: 18px;
+        color: #7a4f50;
         transition: all 0.3s ease;
-        font-weight: 600;
+      }
 
-        &:hover {
+      span {
+        font-size: 1rem;
+      }
+
+      &:hover {
+        color: #8c5e3d;
+        background: rgba(140, 94, 61, 0.05);
+
+        .icon {
           color: #8c5e3d;
-
-          .social-icon {
-            transform: translateY(-3px);
-          }
-        }
-
-        span {
-          font-size: 0.8rem;
-          margin-top: 5px;
-          display: none;
+          transform: scale(1.1);
         }
       }
-    }
 
-    .social-icon {
-      font-size: 1.4rem;
-      transition: all 0.3s ease;
+      &.active {
+        color: #7a4f50;
+        font-weight: 700;
+        background: rgba(122, 79, 80, 0.05);
+
+        .icon {
+          color: #7a4f50;
+        }
+      }
+
+      @media (min-width: 768px) {
+        &:hover::after {
+          content: "Contacta con los novios";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(90, 45, 45, 0.95);
+          color: #f8f5f2;
+          padding: 8px 15px;
+          border-radius: 4px;
+          font-size: 0.9rem;
+          white-space: nowrap;
+          z-index: 100;
+          pointer-events: none;
+          animation: fadeIn 0.3s ease;
+          margin-top: 8px;
+        }
+
+        &:hover::before {
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          border-width: 6px;
+          border-style: solid;
+          border-color: transparent transparent rgba(90, 45, 45, 0.95) transparent;
+        }
+      }
     }
   }
 
   .copyright-container {
     text-align: center;
-    padding: 10px 0 5px;
+    padding: 15px 0 5px;
 
     .copyright-content {
       a {
@@ -142,7 +164,7 @@
         align-items: center;
         gap: 8px;
         transition: all 0.3s ease;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
 
         &:hover {
           color: #8c5e3d;
@@ -156,7 +178,7 @@
       .copyright-icon {
         display: inline-block;
         transition: all 0.6s ease;
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
     }
   }
@@ -172,15 +194,6 @@
 
     .baroque-line-bottom {
       margin-top: 20px;
-    }
-
-    .contact-btn-container {
-      margin-bottom: 30px;
-
-      .contact-btn {
-        padding: 12px 30px;
-        font-size: 0.9rem;
-      }
     }
 
     .footer-content {
@@ -201,35 +214,15 @@
       }
     }
 
-    .social-links-container {
-      flex: 2;
-
-      .social-links {
-        gap: 20px;
-        justify-content: center;
-
-        a span {
-          display: block;
-          font-size: 0.85rem;
-        }
-      }
-
-      .social-icon {
-        font-size: 1.5rem;
-      }
-    }
-
     .copyright-container {
-      padding: 15px 0 5px;
-
       .copyright-content {
         a {
-          font-size: 0.9rem;
+          font-size: 1rem;
           gap: 10px;
         }
 
         .copyright-icon {
-          font-size: 1.1rem;
+          font-size: 1.2rem;
         }
       }
     }
@@ -243,16 +236,6 @@
   .footer {
     .footer-content {
       max-width: 900px;
-    }
-
-    .social-links-container {
-      .social-links {
-        gap: 30px;
-
-        a span {
-          font-size: 0.9rem;
-        }
-      }
     }
   }
 }

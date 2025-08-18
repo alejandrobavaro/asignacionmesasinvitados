@@ -2,270 +2,308 @@
    ESTILOS DEL HEADER - MOBILE FIRST
    ============================================== */
 
-.app-header {
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1000;
-  font-family: "Cormorant Garamond", serif;
-
-  /* Decoraciones superior e inferior - Efecto visual */
-  .header-decoration-top,
-  .header-decoration-bottom {
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #c2a78d, #7a4f50, #c2a78d, transparent);
-    animation: baroqueFlow 8s linear infinite;
-    opacity: 0.7;
-  }
-
-  /* Barra de navegación principal */
-  .header-navbar {
-    background-color: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    padding: 8px 0;
-
-    /* Contenedor flexible para logo y botones */
-    .header-container {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 12px;
-      position: relative;
+   .app-header {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1000;
+    font-family: "Cormorant Garamond", serif;
+  
+    /* Decoraciones superior e inferior */
+    .header-decoration-top,
+    .header-decoration-bottom {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #c2a78d, #7a4f50, #c2a78d, transparent);
+      animation: baroqueFlow 8s linear infinite;
+      opacity: 0.7;
     }
-  }
-
-  /* Estilos del logo (izquierdo y derecho) */
-  .header-logo-left, .header-logo-right {
-    margin: 0;
-    z-index: 1001; /* Por encima del menú móvil */
-
-    .logo-image {
-      max-width: 70px;
-      height: auto;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.05);
-      }
-    }
-  }
-
-  /* Posicionamiento específico de los logos */
-  .header-logo-left {
-    margin-right: auto;
-  }
-
-  .header-logo-right {
-    margin-left: auto;
-  }
-
-  /* Botón hamburguesa para móvil */
-  .menu-toggle {
-    border: none;
-    background: transparent;
-    padding: 6px;
-    order: 2; /* Posición entre los dos logos */
-
-    .menu-icon {
-      font-size: 22px;
-      color: #5a2d2d;
-      transition: all 0.3s ease;
-    }
-
-    &:hover .menu-icon {
-      color: #8c5e3d;
-    }
-  }
-
-  /* Contenedor de botones de navegación */
-  .quick-access-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 10px 0;
-
-    /* Estilo base para todos los botones */
-    .nav-button {
-      background: transparent;
-      border: none;
-      color: #5a2d2d;
-      padding: 8px 12px;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-decoration: none;
-      width: 100%;
-      text-align: left;
-      position: relative;
-
-      /* Iconos dentro de los botones */
-      .icon {
-        font-size: 16px;
-        min-width: 20px;
-      }
-
-      /* Texto del botón */
-      .nav-label {
-        line-height: 1.2;
-      }
-
-      /* Estado activo */
-      &.active {
-        color: #7a4f50;
-        font-weight: 700;
-        background: rgba(122, 79, 80, 0.05);
-      }
-
-      /* Efecto hover */
-      &:hover {
-        color: #8c5e3d;
-        background: rgba(140, 94, 61, 0.05);
-      }
-    }
-  }
-}
-
-/* ==============================================
-   MEDIA QUERIES - TABLET (768px)
-   ============================================== */
-@media (min-width: 768px) {
-  .app-header {
+  
+    /* Barra de navegación principal */
     .header-navbar {
+      background-color: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 8px 0;
+  
       .header-container {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 0 16px;
-      }
-
-      .header-logo-left, .header-logo-right {
-        .logo-image {
-          max-width: 80px;
-        }
-      }
-
-      .menu-toggle {
-        display: none;
-      }
-
-      .quick-access-buttons {
+        display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-        padding: 4px 0;
-        order: 0;
-        flex: 1;
-        margin: 0 20px;
-
-        .nav-button {
-          padding: 6px 8px;
-          width: auto;
-          min-width: 70px;
-          font-size: 11px;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-
-          .nav-label {
-            font-size: 11px;
-          }
-
-          /* Tooltip personalizado debajo del botón */
-          &:hover::after {
-            content: attr(title);
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(90, 45, 45, 0.95);
-            color: #f8f5f2;
-            padding: 10px 15px;
-            border-radius: 6px;
-            font-size: 13px;
-            white-space: normal;
-            width: max-content;
-            max-width: 280px;
-            z-index: 100;
-            pointer-events: none;
-            animation: fadeIn 0.3s ease;
-            margin-top: 8px;
-            text-align: center;
-            font-family: "Cormorant Garamond", serif;
-            font-weight: 500;
-            line-height: 1.5;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-            border: 1px solid #c2a78d;
-          }
-
-          /* Flecha decorativa opcional */
-          &:hover::before {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border-width: 6px;
-            border-style: solid;
-            border-color: transparent transparent rgba(90, 45, 45, 0.95) transparent;
-          }
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 12px;
+        position: relative;
+      }
+    }
+  
+    /* Estilos de los logos */
+    .header-logo-left, .header-logo-right {
+      margin: 0;
+      z-index: 1001;
+  
+      .logo-image {
+        max-width: 70px;
+        height: auto;
+        transition: transform 0.3s ease;
+  
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  
+    .header-logo-left {
+      margin-right: auto;
+    }
+  
+    .header-logo-right {
+      margin-left: auto;
+    }
+  
+    /* Botón hamburguesa */
+    .menu-toggle {
+      border: none;
+      background: transparent;
+      padding: 6px;
+      order: 2;
+  
+      .menu-icon {
+        font-size: 22px;
+        color: #5a2d2d;
+        transition: all 0.3s ease;
+      }
+  
+      &:hover .menu-icon {
+        color: #8c5e3d;
+      }
+    }
+  
+    /* Menú móvil */
+    .navbar-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.98);
+      z-index: 1000;
+      padding-top: 80px;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      
+      &.open {
+        transform: translateX(0);
+      }
+    }
+  
+    /* Enlaces de navegación */
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px;
+  
+      .nav-link {
+        color: #5a2d2d;
+        padding: 12px 15px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        transition: all 0.3s;
+        border-radius: 4px;
+        position: relative;
+  
+        .nav-icon {
+          font-size: 18px;
+          min-width: 24px;
+        }
+  
+        &.active {
+          color: #7a4f50;
+          font-weight: 700;
+          background: rgba(122, 79, 80, 0.05);
+        }
+  
+        &:hover {
+          color: #8c5e3d;
+          background: rgba(140, 94, 61, 0.05);
         }
       }
     }
   }
-}
-
-/* ==============================================
-   MEDIA QUERIES - ESCRITORIO (1024px)
-   ============================================== */
-@media (min-width: 1024px) {
-  .app-header {
-    .header-navbar {
-      .header-container {
-        max-width: 960px;
-      }
-
-      .quick-access-buttons {
-        gap: 10px;
-
-        .nav-button {
-          padding: 8px 10px;
-          font-size: 12px;
-          min-width: 80px;
-
-          .nav-label {
-            font-size: 12px;
+  
+  /* ==============================================
+     MEDIA QUERIES - TABLET (768px)
+     ============================================== */
+  @media (min-width: 768px) {
+    .app-header {
+      .header-navbar {
+        .header-container {
+          max-width: 720px;
+          margin: 0 auto;
+          padding: 0 16px;
+        }
+  
+        .header-logo-left, .header-logo-right {
+          .logo-image {
+            max-width: 80px;
           }
-
-          &:hover::after {
+        }
+  
+        .menu-toggle {
+          display: none;
+        }
+  
+        .navbar-menu {
+          position: static;
+          height: auto;
+          padding: 0;
+          transform: none;
+          background: transparent;
+        }
+  
+        .nav-links {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
+          padding: 4px 0;
+          order: 0;
+          flex: 1;
+          margin: 0 20px;
+  
+          .nav-link {
+            padding: 8px 12px;
             font-size: 14px;
-            padding: 12px 18px;
-            max-width: 300px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-width: 70px;
+  
+            .nav-icon {
+              font-size: 16px;
+              margin-bottom: 4px;
+            }
+  
+            .nav-label {
+              font-size: 12px;
+            }
+  
+            /* Tooltip mejorado */
+            &:hover::after {
+              content: attr(data-tooltip);
+              position: absolute;
+              top: calc(100% + 10px);
+              left: 50%;
+              transform: translateX(-50%);
+              background: rgba(90, 45, 45, 0.95);
+              color: #f8f5f2;
+              padding: 12px 16px;
+              border-radius: 6px;
+              font-size: 14px;
+              white-space: normal;
+              width: 220px;
+              z-index: 1000;
+              pointer-events: none;
+              animation: fadeIn 0.3s ease;
+              text-align: center;
+              line-height: 1.4;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+              font-family: "Cormorant Garamond", serif;
+              font-weight: 500;
+            }
+  
+            /* Flecha del tooltip */
+            &:hover::before {
+              content: '';
+              position: absolute;
+              top: 100%;
+              left: 50%;
+              transform: translateX(-50%);
+              border-width: 8px;
+              border-style: solid;
+              border-color: transparent transparent rgba(90, 45, 45, 0.95) transparent;
+            }
           }
         }
       }
     }
   }
-}
-
-/* ==============================================
-   ANIMACIONES
-   ============================================== */
-@keyframes baroqueFlow {
-  0% { background-position: 100% 0; }
-  100% { background-position: -100% 0; }
-}
-
-@keyframes fadeIn {
-  from { 
-    opacity: 0; 
-    transform: translateX(-50%) translateY(-10px);
+  
+  /* ==============================================
+     MEDIA QUERIES - ESCRITORIO (1024px)
+     ============================================== */
+  @media (min-width: 1024px) {
+    .app-header {
+      .header-navbar {
+        .header-container {
+          max-width: 960px;
+        }
+  
+        .nav-links {
+          gap: 10px;
+  
+          .nav-link {
+            padding: 10px 15px;
+            min-width: 80px;
+            font-size: 14px;
+  
+            .nav-label {
+              font-size: 13px;
+            }
+  
+            &:hover::after {
+              width: 260px;
+              font-size: 15px;
+              padding: 14px 18px;
+            }
+          }
+        }
+      }
+    }
   }
-  to { 
-    opacity: 1; 
-    transform: translateX(-50%) translateY(0);
+  
+
+  /* Estilos para el modal de contraseña */
+.modal-content {
+  border-radius: 8px;
+  border: 1px solid #c2a78d;
+  
+  .modal-header {
+    background-color: #f8f5f2;
+    border-bottom: 1px solid #e0d6cc;
+    
+    .modal-title {
+      font-family: "Cormorant Garamond", serif;
+      color: #5a2d2d;
+    }
+  }
+  
+  .btn-primary {
+    background-color: #7a4f50;
+    border-color: #7a4f50;
+    
+    &:hover {
+      background-color: #5a2d2d;
+      border-color: #5a2d2d;
+    }
   }
 }
+  /* ==============================================
+     ANIMACIONES
+     ============================================== */
+  @keyframes baroqueFlow {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+  }
+  
+  @keyframes fadeIn {
+    from { 
+      opacity: 0; 
+      transform: translateX(-50%) translateY(-5px);
+    }
+    to { 
+      opacity: 1; 
+      transform: translateX(-50%) translateY(0);
+    }
+  }

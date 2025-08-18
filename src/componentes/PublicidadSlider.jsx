@@ -1,12 +1,12 @@
 // Importaciones necesarias
 import React from "react";
-import Slider from "react-slick"; // Importa el componente de slider/carousel de la librería react-slick
+import Slider from "react-slick"; 
 import "slick-carousel/slick/slick.css"; // Estilos base del slider
 import "slick-carousel/slick/slick-theme.css"; // Tema visual por defecto del slider
-import "../assets/scss/_03-Componentes/_MainPublicidadSlider.scss"; // Importación de los estilos SCSS específicos del componente
+import "../assets/scss/_03-Componentes/_PublicidadSlider.scss"; // Importación de los estilos SCSS específicos del componente
 
-// Componente funcional: MainPublicidadSlider
-const MainPublicidadSlider = () => {
+// Componente funcional: PublicidadSlider
+const PublicidadSlider = () => {
   // Configuración de comportamiento del slider
   const sliderSettings = {
     dots: false,          // No muestra los indicadores de posición (puntos)
@@ -73,4 +73,4 @@ const MainPublicidadSlider = () => {
 };
 
 // Exportación del componente
-export default MainPublicidadSlider;
+export default PublicidadSlider;

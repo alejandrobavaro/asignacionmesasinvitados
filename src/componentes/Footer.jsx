@@ -1,25 +1,11 @@
-// =========================================================
-// IMPORTS
-// =========================================================
-
-// React principal
 import React from "react";
-
-// Componente Link de react-router-dom para la navegación interna
-import { Link } from "react-router-dom";
-
-// Estilos específicos del Footer
+import { Link, useLocation } from "react-router-dom";
+import { BsEnvelope } from "react-icons/bs";
 import "../assets/scss/_03-Componentes/_Footer.scss";
 
-// Iconos de redes sociales desde react-icons
-import { BsInstagram, BsYoutube, BsFacebook } from "react-icons/bs";
-
-// =========================================================
-// COMPONENTE Footer
-// =========================================================
-
 function Footer() {
-  // Función para hacer scroll suave al top de la página
+  const location = useLocation();
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -29,55 +15,49 @@ function Footer() {
 
   return (
     <footer className="footer">
-      
-      {/* Botón de contacto */}
-      <div className="contact-btn-container">
-        <Link 
-          to="/contacto" 
-          className="contact-btn"
-          onClick={scrollToTop}
-        >
-          CONTACTO
-        </Link>
-      </div>
-     
-      {/* Contenido principal del Footer */}
       <div className="footer-content">
-        
-        {/* Logo decorativo izquierdo */}
+        {/* Logo decorativo izquierdo con enlace */}
         <div className="footer-logo-container">
-          <img 
-            src="/img/02-logos/logofooter1a.png"
-            alt="Logo decorativo" 
-            className="footer-logo"
-          />
+          <a 
+            href="https://noscasamos-aleyfabi.netlify.app/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <img 
+              src="/img/02-logos/logofooter1a.png"
+              alt="Logo decorativo" 
+              className="footer-logo"
+            />
+          </a>
         </div>
         
-        {/* Redes sociales */}
-        <div className="social-links-container">
-          <div className="social-links">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <BsInstagram className="social-icon" />
-              <span>Instagram</span>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <BsYoutube className="social-icon" />
-              <span>YouTube</span>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <BsFacebook className="social-icon" />
-              <span>Facebook</span>
-            </a>
-          </div>
+        {/* Botón de contacto con icono */}
+        <div className="contact-btn-container">
+          <Link
+            to="/Contacto"
+            className={`contact-btn ${
+              location.pathname === '/Contacto' ? 'active' : ''
+            }`}
+            onClick={scrollToTop}
+          >
+            <BsEnvelope className="icon" />
+            <span>Contacto</span>
+          </Link>
         </div>
-        
-        {/* Logo decorativo derecho */}
+
+        {/* Logo decorativo derecho con enlace */}
         <div className="footer-logo-container">
-          <img 
-            src="/img/02-logos/logofooter1a.png"
-            alt="Logo decorativo" 
-            className="footer-logo"
-          />
+          <a 
+            href="https://noscasamos-aleyfabi.netlify.app/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <img 
+              src="/img/02-logos/logofooter1a.png"
+              alt="Logo decorativo" 
+              className="footer-logo"
+            />
+          </a>
         </div>
       </div>
       

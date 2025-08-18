@@ -1,80 +1,80 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import '../assets/scss/_03-Componentes/_MesaVisual.scss';
 
 /**
- * Componente MesaVisual - Muestra una mesa redonda con sillas alrededor
+ * Componente visual de una mesa con sillas asignables
  * @param {Object} props - Propiedades del componente
- * @param {Object} props.mesa - Datos de la mesa a mostrar
- * @param {Function} props.onSillaClick - Maneja el click en una silla
+ * @param {Object} props.mesa - Datos de la mesa (id, name, capacity, guests)
+ * @param {Function} props.onSillaClick - Maneja clic en una silla ocupada
  * @param {Object} props.selectedGuest - Invitado seleccionado actualmente
- * @param {boolean} props.isVip - Indica si la mesa es VIP
+ * @param {Boolean} props.isVip - Indica si la mesa es VIP
  */
 const MesaVisual = ({ mesa, onSillaClick, selectedGuest, isVip }) => {
-  // Crear array combinado de sillas ocupadas y vacías
-  const sillas = [];
-  
-  // Añadir sillas ocupadas con su número de posición
-  mesa.guests.forEach((invitado, index) => {
-    sillas.push({
-      id: `silla-${invitado.id}`,
+  // Genera IDs únicos y estables para las sillas
+  const sillasOrdenadas = useMemo(() => {
+    const generarIdSilla = (mesaId, sillaNumero, invitadoId = null) => {
+      return `silla-${mesaId}-${sillaNumero}${invitadoId ? `-${invitadoId}` : ''}`;
+    };
+    // Sillas ocupadas
+    const sillasOcupadas = mesa.guests.map((invitado, index) => ({
+      id: generarIdSilla(mesa.id, index + 1, invitado.id),
       ocupada: true,
       invitado,
-      numero: index + 1
-    });
-  });
+      numero: index + 1,
+    }));
+    // Sillas vacías
+    const sillasVacias = Array.from(
+      { length: Math.max(0, mesa.capacity - mesa.guests.length) },
+      (_, i) => ({
+        id: generarIdSilla(mesa.id, mesa.guests.length + i + 1),
+        ocupada: false,
+        numero: mesa.guests.length + i + 1,
+      })
+    );
+    // Combina y ordena las sillas en círculo
+    const todasLasSillas = [...sillasOcupadas, ...sillasVacias];
+    const anguloPorSilla = 360 / mesa.capacity;
 
-  // Añadir sillas vacías con su número de posición
-  for (let i = 0; i < mesa.capacity - mesa.guests.length; i++) {
-    sillas.push({
-      id: `silla-vacia-${i}`,
-      ocupada: false,
-      numero: mesa.guests.length + i + 1
+    return Array.from({ length: mesa.capacity }, (_, i) => {
+      const angulo = i * anguloPorSilla;
+      const sillaIndex = Math.round((angulo / 360) * (todasLasSillas.length - 1));
+      return {
+        ...todasLasSillas[sillaIndex],
+        angulo,
+      };
     });
-  }
-
-  // Ordenar sillas para distribución circular uniforme
-  const sillasOrdenadas = [];
-  const anguloPorSilla = 360 / mesa.capacity;
-  
-  for (let i = 0; i < mesa.capacity; i++) {
-    const angulo = i * anguloPorSilla;
-    const sillaIndex = Math.round(angulo / 360 * (sillas.length - 1));
-    if (sillas[sillaIndex]) {
-      sillasOrdenadas.push({
-        ...sillas[sillaIndex],
-        angulo
-      });
-    }
-  }
+  }, [mesa.id, mesa.capacity, mesa.guests]);
 
   return (
     <div className="mesa-visual">
-      {/* Mesa circular central */}
       <div className={`mesa-circular ${isVip ? 'mesa-vip' : ''}`}>
         <div className="mesa-nombre">
-          {mesa.name}<br />
+          {mesa.name}
+          <br />
           <span className="mesa-capacidad-indicador">
             {mesa.guests.length}/{mesa.capacity}
           </span>
         </div>
       </div>
-      
-      {/* Renderizar todas las sillas con posicionamiento circular */}
+
       {sillasOrdenadas.map((silla) => (
         <div
           key={silla.id}
           className={`silla ${silla.ocupada ? 'silla-ocupada' : 'silla-vacia'} ${silla.invitado?.pendiente ? 'silla-pendiente' : ''}`}
           style={{
-            backgroundColor: silla.ocupada && selectedGuest?.id === silla.invitado.id ? '#FFD700' : 
-                            silla.ocupada ? '#8B4513' : '#DDD',
-            // Posicionamiento dinámico basado en el ángulo
+            backgroundColor: silla.ocupada && selectedGuest?.id === silla.invitado.id
+              ? '#FFD700'
+              : silla.ocupada
+              ? '#8B4513'
+              : '#DDD',
             transform: `rotate(${silla.angulo}deg) translate(85px) rotate(-${silla.angulo}deg)`,
             position: 'absolute',
             top: '50%',
-            left: '50%'
+            left: '50%',
           }}
           onClick={() => silla.ocupada && onSillaClick(silla.invitado)}
-          data-tooltip={silla.ocupada ? `${silla.invitado.nombre} (${silla.invitado.relacion})` : "Silla vacía"}
+          data-tooltip={silla.ocupada ? `${silla.invitado.nombre} (${silla.invitado.relacion})` : 'Silla vacía'}
+          aria-label={silla.ocupada ? `Silla ocupada por ${silla.invitado.nombre}` : 'Silla vacía'}
         >
           {silla.numero}
         </div>
@@ -83,4 +83,4 @@ const MesaVisual = ({ mesa, onSillaClick, selectedGuest, isVip }) => {
   );
 };
 
-export default MesaVisual;
+export default React.memo(MesaVisual);

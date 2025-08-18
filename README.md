@@ -6,11 +6,11 @@ Este proyecto es una aplicación web para la organización de mesas en eventos c
 
 ## Estructura del Proyecto
 
-El proyecto está compuesto principalmente por dos componentes React: `POrgAsignacionMesas` y `MesaVisual`. A continuación, se detalla la funcionalidad y estructura de cada uno.
+El proyecto está compuesto principalmente por dos componentes React: `AsignacionMesas` y `MesaVisual`. A continuación, se detalla la funcionalidad y estructura de cada uno.
 
 ### Componentes
 
-#### `POrgAsignacionMesas`
+#### `AsignacionMesas`
 
 Este es el componente principal que gestiona la lógica de la aplicación y la interfaz de usuario para la organización de mesas.
 
