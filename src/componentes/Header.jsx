@@ -21,20 +21,21 @@ const Header = () => {
     //   tooltip: "Volver a la página principal"
     // },
     { 
-      path: "/buscar-mesa", 
-      icon: <BsSearch />, 
-      label: "Buscar mi Mesa",
-      shortLabel: "Buscar",
-      tooltip: "Consulta tu mesa asignada"
-    },
-    { 
       path: "/asignacion-mesas", 
       icon: <BsTable />, 
       label: "Asignación de Mesas",
-      shortLabel: "Tu Mesa",
-      tooltip: "Organización de mesas para el banquete (acceso restringido)",
+      shortLabel: "Asignación de Mesas",
+      tooltip: "Asignación de ubicacion de invitados en mesas para la Organización (acceso restringido)",
       protected: true
+    },
+    { 
+      path: "/buscar-mesa", 
+      icon: <BsSearch />, 
+      label: "Buscar mi Mesa",
+      shortLabel: "Buscar mi Mesa",
+      tooltip: "Consulta tu mesa asignada"
     }
+
   ];
 
   const handleToggleMobileMenu = () => {

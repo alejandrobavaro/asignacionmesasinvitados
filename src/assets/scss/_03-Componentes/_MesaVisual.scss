@@ -1,127 +1,83 @@
-/* Estilos para la visualización de mesas */
 .mesa-visual {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 20px auto;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.mesa-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: #95a5a6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  
+  &.vip {
+    background: #f39c12;
   }
+}
+
+.mesa-info {
+  text-align: center;
+  color: white;
+}
+
+.mesa-name {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.mesa-count {
+  font-size: 0.8em;
+  opacity: 0.9;
+}
+
+.silla {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  top: 50%;
+  left: 50%;
+  margin-left: -15px;
+  margin-top: -15px;
   
-  .mesa-circular {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    background: #f5e7d4;
-    border: 3px solid #8B4513;
-    border-radius: 50%;
-    top: 25px;
-    left: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  
-    &.mesa-vip {
-      border-color: gold;
-      background: #fff9e6;
-    }
-  
-    .mesa-nombre {
-      font-weight: bold;
-      text-align: center;
-      padding: 10px;
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 10px;
-    }
-  
-    .mesa-capacidad-indicador {
-      font-size: 0.8rem;
-      color: #666;
-    }
-  }
-  
-  .silla {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 10px;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin: -15px 0 0 -15px; /* Ajuste para centrar la silla */
-  
+  &.occupied {
+    background: #8B4513;
+    
     &:hover {
-      transform: scale(1.1);
-    }
-  
-    &.silla-ocupada {
-      background: #8B4513;
-    }
-  
-    &.silla-vacia {
-      background: #DDD;
-    }
-  
-    &.silla-pendiente {
-      opacity: 0.7;
-      border: 1px dashed #ccc;
-    }
-  
-    &[data-tooltip] {
-      position: relative;
-  
-      &:hover::after {
-        content: attr(data-tooltip);
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #333;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        white-space: nowrap;
-        z-index: 10;
-      }
+      background: #A0522D;
+      transform: scale(1.2);
     }
   }
   
-  /* Posicionamiento circular de las sillas - Método corregido */
-  @for $i from 1 through 10 {
-    .silla:nth-child(#{$i}) {
-      $angle: ($i - 1) * (360deg / 10);
-      $distance: 85px;
-      $x: calc(50% + #{$distance * cos($angle)});
-      $y: calc(50% + #{$distance * sin($angle)});
-      transform: translate(-50%, -50%) translate(#{$distance * cos($angle)}, #{$distance * sin($angle)});
-    }
+  &.empty {
+    background: #bdc3c7;
+    cursor: not-allowed;
   }
   
-  /* Media Queries para responsive design */
-  @media (min-width: 768px) {
-    .mesa-visual {
-      width: 220px;
-      height: 220px;
-  
-      .mesa-circular {
-        width: 170px;
-        height: 170px;
-      }
+  &.available {
+    background: #27ae60;
+    cursor: pointer;
+    
+    &:hover {
+      background: #2ecc71;
+      transform: scale(1.2);
     }
   }
-  
-  @media (min-width: 1024px) {
-    .mesa-visual {
-      width: 250px;
-      height: 250px;
-  
-      .mesa-circular {
-        width: 200px;
-        height: 200px;
-      }
-    }
-  }
+}
